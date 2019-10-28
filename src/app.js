@@ -24,3 +24,12 @@ process.on('SIGINT', function() {
   connection.end();
   process.exit(1);
 });
+
+
+function cuadro(){
+  document.getElementById('respuesta').style.display='block';
+
+document.getElementById('respuesta').innerHTML="Aca iria el resultado de la consulta";
+
+
+}
