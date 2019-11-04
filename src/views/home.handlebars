@@ -1,0 +1,29 @@
+
+
+<h1>Ingrese su consulta MYSQL</h1>
+<form method="post" action="/">
+  <textarea name="query" rows="4" cols="30"></textarea><br />
+  <input type="submit" />
+</form>
+
+<h3>Resultados</h3>
+<code >{{ resultados }}</code>
+
+<h3>Columnas</h3>
+<code>{{ columnas }}</code>
+
+<h3>Error</h3>
+<code>{{ error }}</code>
+
+
+
+
+<style >
+textarea{
+
+  resize: vertical;
+   min-height: 60px;
+   max-height: 300px;
+ }
+
+</style>

@@ -1,16 +1,26 @@
 var express = require('express');
 var connection = require('./connection');
-
+var exphbs  = require('express-handlebars');
 var app = express();
+var path = require('path');
+
+app.use(express.urlencoded({ extended: false }));
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res) {
-  res.send('¡Hola ET 35!');
+  res.render('home');
 });
 
-app.get('/query', function(req, res) {
-  connection.query('SELECT * FROM estudiantes', function (error, results, fields) {
-    if (error) throw error;
-    res.json(results);
+app.post('/', function(req, res) {
+  const query = req.body.query;
+  connection.query(query, function (error, results, fields) {
+    res.render('home', {
+      resultados: results,
+      columnas: JSON.stringify(fields),
+      error: error
+    });
   });
 });
 
@@ -24,12 +34,3 @@ process.on('SIGINT', function() {
   connection.end();
   process.exit(1);
 });
-
-
-function cuadro(){
-  document.getElementById('respuesta').style.display='block';
-
-document.getElementById('respuesta').innerHTML="Aca iria el resultado de la consulta";
-
-
-}
