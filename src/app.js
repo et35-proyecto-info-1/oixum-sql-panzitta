@@ -17,8 +17,8 @@ app.post('/', function(req, res) {
   const query = req.body.query;
   connection.query(query, function (error, results, fields) {
     res.render('home', {
-      resultados: results,
-      columnas: JSON.stringify(fields),
+      resultados:JSON.stringify(results),
+      columnas: fields,
       error: error
     });
   });

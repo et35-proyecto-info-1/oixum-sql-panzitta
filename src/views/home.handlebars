@@ -6,30 +6,27 @@
   <input type="submit" />
 </form>
 
-<h3>Resultados</h3>
-<code >{{ resultados }}</code>
-
-<h3>Columnas</h3>
-<code>{{ columnas }}</code>
-
-<h3>Error</h3>
-<code>{{ error }}</code>
-
-
 
 <table>
   <thead>
-    {{#each columnas}}
-    <th>{{cols.name}}</th>
-    {{/each}}
+    {{# each columnas}}
+<td>{{this.name}}</td>
+{{/each}}
   </thead>
   <tbody>
 
+{{#each resultados }}
+    <tr>
+      {{#each columnas}}
+      <td>{{this.id}}</td>
+      <td>{{this.nombre}}</td>
+      <td>{{this.comidaPreferida}}</td>
+      <td>{{this.fechaNacimiento}}</td>
+      {{/each}}
+    </tr>
+{{/each}}
   </tbody>
 </table>
-
-
-
 
 
 
